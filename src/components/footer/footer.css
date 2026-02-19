@@ -1,0 +1,25 @@
+footer {
+    display:flex;
+    justify-content: center;
+    gap:1rem;
+   padding:1rem; 
+}
+.footer-item{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:0.25rem;
+   margin-top:3rem;
+}
+.footer-item:hover{
+    transform:scale(1.1);
+
+}
+footer.dark {
+    background-color: black;
+    color: white;
+}
+footer.dark i{
+    color:white;
+}

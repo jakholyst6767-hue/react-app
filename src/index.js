@@ -7,10 +7,13 @@ import { Dashboard } from "./pages/dashboard/dashboard";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Users } from "./pages/users/users";
 import { NewsDetails } from "./pages/newsDetails/newsDetails";
+import { ThemeProvider } from "./context/ThemeContext";
+import { Footer } from "./components/footer/footer";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+    <ThemeProvider>
     <BrowserRouter>
         <Nav />
         <Routes>
@@ -20,6 +23,8 @@ root.render(
           <Route path="/users" element={<Users/>}></Route>
           <Route path="/news/:slug" element={<NewsDetails/>}></Route>
         </Routes>
+        <Footer></Footer>
     </BrowserRouter>
+    </ThemeProvider>
   </React.StrictMode>,
 );

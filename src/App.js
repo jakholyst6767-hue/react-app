@@ -1,51 +1,44 @@
-import './App.css';
+import "./App.css";
 import { News } from "./components/news/news";
+import { useContext, useEffect, useState } from "react";
+import { ThemeContext } from "./context/ThemeContext";
 
 function App() {
-
   const name = "Kuba";
+  const { theme } = useContext(ThemeContext);
+  const [news, setNews] = useState([]);
 
-  const newsList = [
-    {
-      title: "Spotkanie w Monrchium",
-      description: "odbyło się spotkanie światowych liderów"
-    },
+  useEffect(() => {
 
-    {
-      title: "Szczyt klimatyczny w Dubaju",
-      description: "przywódcy państw debatowali nad nowymi celami redukcji emisji CO2"
-    },
+    const fetchNews = async () => {
+      const response = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=20");
 
-    {
-      title: "Rozmowy pokojowe w Genewie",
-      description: "delegacje omawiały warunki zawieszenia broni i dalsze negocjacje"
-    },
+      if (!response.ok) {
+        return;
+      }
 
-    {
-      title: "Forum gospodarcze w Davos",
-      description: "liderzy biznesu i polityki dyskutowali o przyszłości globalnej ekonomii"
+      const data = await response.json();
+      console.log(data);
+      setNews(data);
     }
 
-
-  ]
+    fetchNews();
+  }, [])
 
   return (
-    <>
-
+    <div className={theme}>
       <h1 className="animated-title">HELLO {name}!</h1>
 
-      <h1>Hello {name}!</h1>
-
       <main>
-        {newsList.map((news, index) =>
-          <News key={news.title}
-          title={news.title}
-            description={news.description}
+        {news.map((news, index) => (
+          <News
+            key={index}
+            title={news.title}
+            description={news.body}
           ></News>
-        )}
+        ))}
       </main>
-    </>
-
+    </div>
   );
 }
 

@@ -28,10 +28,6 @@ export function News({ title, description }) {
   }, [likes]);
 
   const createSlug = (title) => {
-    if (!title) {
-        return ""
-    }
-    
     return title.replace(/\s/g, "-");
   }
 

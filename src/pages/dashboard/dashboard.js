@@ -1,8 +1,12 @@
-
+import { useContext } from "react";
+import { ThemeContext } from "../../context/ThemeContext";
 
 export function Dashboard() {
+  const { theme } = useContext(ThemeContext);
 
-    return(
-        <h1>DASHBOARD</h1>
-    )
+  return (
+    <div className={theme}>
+      <h1>DASHBOARD</h1>
+    </div>
+  );
 }

@@ -36,8 +36,6 @@ h1 {
   color: purple;
 }
 
-
-
 .animated-title {
   font-size: 4rem;
   font-weight: 900;
@@ -54,7 +52,9 @@ h1 {
   background-size: 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradientMove 6s linear infinite, glowPulse 2s ease-in-out infinite alternate;
+  animation:
+    gradientMove 6s linear infinite,
+    glowPulse 2s ease-in-out infinite alternate;
 }
 
 /* Animacja przesuwania gradientu */
@@ -83,10 +83,31 @@ h1 {
   }
 }
 
-
 main {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  
+}
+
+div.light,
+div.dark {
+  background-color: #0f1042;
+  padding-right: 4rem;
+  padding-left: 4em;
+  padding-top: 120px;
+}
+
+div.light {
+  background-color: rgb(226, 226, 226);
+}
+
+div.light h3,
+div.light p,
+div.light button {
+  color: black;
+}
+
+div.light h1.animated-title {
+  color: black;
+  animation: unset;
 }
